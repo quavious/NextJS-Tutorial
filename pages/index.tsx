@@ -1,25 +1,13 @@
-import styles from "./custom.module.scss"
+import styles from '../styles/Home.module.css'
+import Link from 'next/link'
 
-function Heading(props){
-  const color = Math.random() > 0.5 ? "red" : "blue";
-  return <div><h1>{props.heading}</h1>
-  <style jsx>
-      {
-        `
-        h1 {
-          color: ${color}
-        }
-        `
-      }
-    </style>
-    </div>
-}
-
-export default function Home() {
+export default function Home(){
   return (
-    <div className="title">
-      <Heading heading="heading"/>
-      <h1 className={styles['content-2']}><span>Magneta within SCSS</span>Block</h1>
+    <div className={styles.container}>
+      <h1>Hello World!</h1>
+      <Link href="/page1">Go to Page 1</Link>
+      <Link href="/page1/board">Go to Page Board</Link>
+      <Link href="/newpage">Go To Newpage</Link>
     </div>
   )
 }
