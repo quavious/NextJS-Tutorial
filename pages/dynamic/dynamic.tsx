@@ -7,6 +7,7 @@ export const getStaticProps: GetStaticProps = async context => {
     const fs = require('fs')
     
     return {
+        revalidate: 10, // Request to Server
         props: {
             myFavoriteNumber : Math.floor(Math.random() * 100),
             myText : fs.readFileSync(path.join(process.cwd(), 'public/robots.txt'), 'utf-8')
