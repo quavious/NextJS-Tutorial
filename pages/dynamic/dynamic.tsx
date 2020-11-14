@@ -1,19 +1,16 @@
-import {GetStaticProps} from 'next'
+import {GetServerSideProps, GetStaticProps} from 'next'
 import path from 'path'
 
-// Executed on server
-export const getStaticProps: GetStaticProps = async context => {
-
-    const fs = require('fs')
-    
+// called always on every page request. 
+// would be slower
+export const getServerSideProps: GetServerSideProps = async context => {
     return {
-        revalidate: 10, // Request to Server
         props: {
-            myFavoriteNumber : Math.floor(Math.random() * 100),
-            myText : fs.readFileSync(path.join(process.cwd(), 'public/robots.txt'), 'utf-8')
+            myFavoriteNumber: Math.random(),
         }
     }
 }
+
 
 export default function DynamicPage(props){
     return (
